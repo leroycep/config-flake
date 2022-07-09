@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-        ./hardware/framework.nix
+        ./hardware/renvi.nix
     ];
 
   # Bootloader.
