@@ -16,16 +16,28 @@
     pkgs.vorta
     pkgs.nushell
     pkgs.kanshi
+    pkgs.mako
   ];
 
+  programs.bash.enable = true;
   home.sessionVariables = {
     EDITOR = "hx";
     BROWSER = "qutebrowser";
   };
   
+  xdg.configFile."river/settings" = {
+    executable = true;
+    source =./config/river-settings.sh;
+  };
   xdg.configFile."river/init" = {
     executable = true;
-    source = ./config/river-init.sh;
+    text = ''
+      $XDG_CONFIG_HOME/river/settings
+      rivertile -view-padding 0 -outer-padding 0
+    '';
+    onChange= ''
+      $XDG_CONFIG_HOME/river/settings
+    '';
   };
   
   services.kanshi = import ./config/kanshi.nix;
@@ -52,7 +64,14 @@
     keyBindings = {
       normal = {
         ",b" = "spawn --userscript qute-bitwarden";
+        ",c" = "spawn chromium {url}";
+        ",d" = "config-cycle content.user_stylesheets '${./config/qutebrowser/global-dark-mode.css}' ''";
+        "<Ctrl+e>" = "edit-text";
       };
+    };
+    settings = {
+      editor.command = ["foot" "--override=title=qutebrowser edit-text" "hx" "{file}"];
+      colors.webpage.preferred_color_scheme = "dark";
     };
   };
 

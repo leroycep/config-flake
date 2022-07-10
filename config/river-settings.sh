@@ -115,11 +115,9 @@ riverctl set-repeat 50 300
 # Make certain views start floating
 riverctl float-filter-add app-id float
 riverctl float-filter-add title "Volume Control"
+riverctl float-filter-add title "qutebrowser edit-text"
 
 # Set app-ids and titles of views which should use client side decorations
 riverctl csd-filter-add app-id "gedit"
 
-# Set the default layout generator to be rivertile and start it.
-# River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 0 -outer-padding 0
