@@ -18,6 +18,7 @@
     pkgs.mako
     pkgs.zoxide
     pkgs.ranger
+    pkgs.fuzzel
   ];
 
   programs.bash.enable = true;
