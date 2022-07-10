@@ -23,6 +23,7 @@
     pkgs.brightnessctl
     pkgs.wl-clipboard
     pkgs.pamixer
+    pkgs.ripcord
   ];
 
   programs.bash.enable = true;

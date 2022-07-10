@@ -14,6 +14,7 @@
       the-pkgs-overlay = import nixpkgs {
         inherit system;
         overlays = [ nc-emacs-overlay.overlay ];
+        config.allowUnfree = true;
       };
     in {
 
