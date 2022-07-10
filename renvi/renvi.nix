@@ -36,6 +36,8 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+  
+  services.udisks2.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.geemili = {
@@ -50,9 +52,10 @@
   environment.systemPackages = [
     # editor for all situations
     pkgs.kakoune
-    pkgs.home-manager
     pkgs.cachix
-    pkgs.sway
+    pkgs.udiskie
+    pkgs.borgbackup
+    pkgs.borgmatic
   ];
 
   nix = {

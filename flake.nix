@@ -26,21 +26,12 @@
         ({ pkgs, ... }: {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-
-          # login screen
           environment.systemPackages = [
-            pkgs.greetd.tuigreet
+            pkgs.home-manager
           ];
-
-          services.greetd.enable = true;
-          services.greetd.settings = {
-            terminal.vt = 2;
-            default_session = {
-              command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-              user = "greeter";
-            };
-          };
         })
+            
+        ./desktop-environment.nix
 
         ./local.nix
         ./renvi/renvi.nix
@@ -52,6 +43,7 @@
       modules = [
         ./geemili.nix
         ./2_areas/exobrain.nix
+        ./2_areas/sleep.nix
       ];
     };
   };
