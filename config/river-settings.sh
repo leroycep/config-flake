@@ -10,12 +10,6 @@ riverctl set-cursor-warp on-output-change
 riverctl map normal Super Return spawn foot
 riverctl map normal Super Space spawn "fuzzel --terminal=foot"
 
-riverctl spawn "kanshi > /tmp/kanshi.${XDG_VTNR}.${USER}.log 2>&1"
-riverctl spawn "waybar > /tmp/waybar.${XDG_VTNR}.${USER}.log 2>&1"
-riverctl spawn "mako > /tmp/mako.${XDG_VTNR}.${USER}.log 2>&1"
-# TODO: Group with 2_areas/sleep
-riverctl spawn "wlsunset -l 42 -L -112"
-
 # Ending things
 riverctl map normal Super+Shift Q close # close window
 riverctl map normal Super+Shift E exit # exit river

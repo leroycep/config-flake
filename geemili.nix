@@ -6,6 +6,8 @@
 
   home.packages = [
     pkgs.helix
+    pkgs.python3Packages.python-lsp-server
+
     pkgs.xclip
     pkgs.httpie
     pkgs.bitwarden-cli
@@ -15,7 +17,6 @@
     pkgs.vorta
     pkgs.nushell
     pkgs.kanshi
-    pkgs.mako
     pkgs.zoxide
     pkgs.ranger
     pkgs.fuzzel
@@ -24,6 +25,9 @@
     pkgs.wl-clipboard
     pkgs.pamixer
     pkgs.ripcord
+
+    # "qutebrowser/userscripts/qute-bitwarden-fuzzel"
+    pkgs.ripgrep
   ];
 
   programs.bash.enable = true;
@@ -36,19 +40,44 @@
     executable = true;
     source = ./config/river-settings.sh;
   };
+  xdg.configFile."river/services" = {
+    executable = true;
+    source = ./config/river-services.sh;
+  };
   xdg.configFile."river/init" = {
     executable = true;
     text = ''
       #!/usr/bin/env sh
+      echo "Start of river init file!"
       $HOME/.config/river/settings
+
+      riverctl spawn "${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY"
+      riverctl spawn "${pkgs.systemd}/bin/systemctl --user start river-session.target"
+      $HOME/.config/river/services
+
       rivertile -view-padding 0 -outer-padding 0
     '';
     onChange= ''
       #!/usr/bin/env sh
       $HOME/.config/river/settings
+      $HOME/.config/river/services
     '';
   };
+  systemd.user.targets.river-session = {
+    Unit = {
+      Description = "river compositor session";
+      BindsTo = [ "graphical-session.target" ];
+    };
+  };
   
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+    settings = import ./config/waybar/config.nix;
+    style = ./config/waybar/style.css;
+  };
+
+  programs.mako.enable = true;
   services.kanshi = import ./config/kanshi.nix;
 
   programs.foot.enable = true;
@@ -69,12 +98,6 @@
     set vcs_aware true
   '';
 
-  programs.waybar = {
-    enable = true;
-    settings = import ./config/waybar/config.nix;
-    style = ./config/waybar/style.css;
-  };
-
   programs.git = {
     enable = true;
     userName = "LeRoyce Pearson";
@@ -90,7 +113,7 @@
     enable = true;
     keyBindings = {
       normal = {
-        ",b" = "spawn --userscript qute-bitwarden";
+        #",b" = "spawn ${./1_projects/qute-bitwarden}/qute-bitwarden";
         ",c" = "spawn chromium {url}";
         ",d" = "config-cycle content.user_stylesheets '${./config/qutebrowser/global-dark-mode.css}' ''";
         "<Ctrl+e>" = "edit-text";
@@ -99,6 +122,7 @@
     settings = {
       editor.command = ["foot" "--override=title=qutebrowser edit-text" "hx" "{file}"];
       colors.webpage.preferred_color_scheme = "dark";
+      qt.highdpi = true;
     };
   };
 

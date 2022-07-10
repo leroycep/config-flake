@@ -1,5 +1,6 @@
 {
   enable = true;
+  systemdTarget = "graphical-session.target";
   profiles = {
 
     laptop-lid-closed.outputs = [
@@ -14,9 +15,8 @@
     ];
 
     strong-independent-laptop.outputs = [
-      {criteria = "eDP-1";}
+      {criteria = "eDP-1"; scale = 1.5;}
     ];
 
   };
-
 }
