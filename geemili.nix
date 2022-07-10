@@ -32,11 +32,13 @@
   xdg.configFile."river/init" = {
     executable = true;
     text = ''
-      $XDG_CONFIG_HOME/river/settings
+      #!/usr/bin/env sh
+      $HOME/.config/river/settings
       rivertile -view-padding 0 -outer-padding 0
     '';
     onChange= ''
-      $XDG_CONFIG_HOME/river/settings
+      #!/usr/bin/env sh
+      $HOME/.config/river/settings
     '';
   };
   
