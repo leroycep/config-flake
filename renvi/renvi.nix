@@ -23,6 +23,9 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
