@@ -17,6 +17,7 @@
     pkgs.kanshi
     pkgs.mako
     pkgs.zoxide
+    pkgs.ranger
   ];
 
   programs.bash.enable = true;
@@ -27,7 +28,7 @@
   
   xdg.configFile."river/settings" = {
     executable = true;
-    source =./config/river-settings.sh;
+    source = ./config/river-settings.sh;
   };
   xdg.configFile."river/init" = {
     executable = true;
@@ -56,6 +57,11 @@
   xdg.configFile."nushell/zoxide.nu".source = ./config/nushell/zoxide.nu;
   programs.nushell.envFile.source = ./config/nushell/env.nu;
   programs.nushell.configFile.source = ./config/nushell/config.nu;
+
+  xdg.configFile."ranger/plugins/osc7.py".source = ./config/ranger/plugin-ranger-osc7.py;
+  xdg.configFile."ranger/rc.conf".text = ''
+    set vcs_aware true
+  '';
 
   programs.waybar = {
     enable = true;

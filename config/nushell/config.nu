@@ -1,7 +1,7 @@
 # Nushell Config File
 
 # TODO make this more nix friendly
-use .config/nushell/zoxide.nu [z,zi]
+use ~/.config/nushell/zoxide.nu [z,zi]
 
 # TODO
 # # Get just the extern definitions without the custom completion commands
