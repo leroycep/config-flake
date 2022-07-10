@@ -19,6 +19,10 @@
     pkgs.zoxide
     pkgs.ranger
     pkgs.fuzzel
+    pkgs.playerctl
+    pkgs.brightnessctl
+    pkgs.wl-clipboard
+    pkgs.pamixer
   ];
 
   programs.bash.enable = true;

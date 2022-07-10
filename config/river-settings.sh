@@ -90,15 +90,15 @@ do
     riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
     riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
 
-    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+    # Control MPRIS aware media players with playerctl
     riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
     riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
 
-    # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
+    # Control screen backlight brightness
+    riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'
+    riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set -5%'
 
     # Turn off the laptop screen when close
     #riverctl map-switch $mode lid close
