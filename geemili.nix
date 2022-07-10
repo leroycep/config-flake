@@ -6,7 +6,6 @@
 
   home.packages = [
     pkgs.helix
-    pkgs.foot
     pkgs.xclip
     pkgs.httpie
     pkgs.bitwarden-cli
@@ -17,6 +16,7 @@
     pkgs.nushell
     pkgs.kanshi
     pkgs.mako
+    pkgs.zoxide
   ];
 
   programs.bash.enable = true;
@@ -43,6 +43,19 @@
   };
   
   services.kanshi = import ./config/kanshi.nix;
+
+  programs.foot.enable = true;
+  programs.foot.settings = {
+    main = {
+      shell = "${pkgs.nushell}/bin/nu";
+      dpi-aware = "yes";
+      font = "Fira Code:size=11";
+    };
+  };
+  programs.nushell.enable = true;
+  xdg.configFile."nushell/zoxide.nu".source = ./config/nushell/zoxide.nu;
+  programs.nushell.envFile.source = ./config/nushell/env.nu;
+  programs.nushell.configFile.source = ./config/nushell/config.nu;
 
   programs.waybar = {
     enable = true;

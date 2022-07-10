@@ -22,9 +22,14 @@
     font-awesome_4
     corefonts
     roboto
+    fira
+    fira-code
+    fira-code-symbols
     (nerdfonts.override {
       fonts = [ "FiraCode" ];
     })
+    noto-fonts-cjk
+    noto-fonts-emoji
   ];
 }
 
