@@ -46,6 +46,7 @@
         ./2_areas/exobrain.nix
         ./2_areas/sleep.nix
         ./2_areas/leif.nix
+        ./2_areas/datafy-interview.nix
       ];
     };
   };
