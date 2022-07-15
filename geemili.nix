@@ -102,7 +102,10 @@
     enable = true;
     userName = "LeRoyce Pearson";
     userEmail = "contact@leroycepearson.dev";
+    lfs.enable = true;
+    extraConfig.init.defaultBranch = "dev";
   };
+  programs.gitui.enable = true;
   
   programs.gh = {
     enable = true;
@@ -113,7 +116,7 @@
     enable = true;
     keyBindings = {
       normal = {
-        #",b" = "spawn ${./1_projects/qute-bitwarden}/qute-bitwarden";
+        ",b" = "spawn ${pkgs.qute-bitwarden}/bin/qute-bitwarden {url}";
         ",c" = "spawn chromium {url}";
         ",d" = "config-cycle content.user_stylesheets '${./config/qutebrowser/global-dark-mode.css}' ''";
         "<Ctrl+e>" = "edit-text";
@@ -126,4 +129,12 @@
     };
   };
 
+  services.udiskie.enable = true;
+  services.udiskie.settings.program_options.file_manager = "dolphin";
+  services.udiskie.settings.program_options.terminal = "foot ranger";
+  
+  gtk.enable = true;
+  #services.dbus.packages = [pkgs.dconf];
+  gtk.theme.name = "Dracula";
+  gtk.theme.package = pkgs.dracula-theme;
 }

@@ -30,5 +30,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
   ];
+  
+  programs.dconf.enable = true;
 }
 

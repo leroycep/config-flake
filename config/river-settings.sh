@@ -110,6 +110,7 @@ riverctl set-repeat 50 300
 riverctl float-filter-add app-id float
 riverctl float-filter-add title "Volume Control"
 riverctl float-filter-add title "qutebrowser edit-text"
+riverctl float-filter-add title "pinentry-qt"
 
 # Set app-ids and titles of views which should use client side decorations
 riverctl csd-filter-add app-id "gedit"

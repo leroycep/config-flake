@@ -67,6 +67,8 @@
       experimental-features = nix-command flakes
     '';
   };
+  
+  boot.kernel.sysctl."keernel.perf_event_paranoid" = 1;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
