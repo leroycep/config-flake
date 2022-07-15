@@ -22,6 +22,8 @@
     pkgs.pavucontrol
     
     pkgs.fd
+    
+    pkgs.ffmpeg-full
   ];
   
   programs.direnv.enable = true;
