@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.anki
+    pkgs.anki-bin
     pkgs.bun
     pkgs.dconf
     pkgs.gnome.gnome-system-monitor
