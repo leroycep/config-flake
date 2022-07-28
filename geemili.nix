@@ -34,6 +34,7 @@
   home.sessionVariables = {
     EDITOR = "hx";
     BROWSER = "qutebrowser";
+    SHELL = "${pkgs.nushell}/bin/nu";
   };
   
   xdg.configFile."river/settings" = {
@@ -96,6 +97,7 @@
   xdg.configFile."ranger/plugins/osc7.py".source = ./config/ranger/plugin-ranger-osc7.py;
   xdg.configFile."ranger/rc.conf".text = ''
     set vcs_aware true
+    map S shell ${pkgs.nushell}/bin/nu
   '';
 
   programs.git = {

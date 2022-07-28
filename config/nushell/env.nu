@@ -56,3 +56,7 @@ let-env NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # let-env PATH = ($env.PATH | prepend '/some/path')
+
+# ssh-agent
+# https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login
+let-env SSH_AUTH_SOCK = ([ $env.XDG_RUNTIME_DIR "ssh-agent.socket" ] | path join);
